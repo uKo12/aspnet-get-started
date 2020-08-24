@@ -49,4 +49,4 @@ steps:
     WebAppName: 'testSAPAPP'
     packageForLinux: '$(Build.ArtifactStagingDirectory)/**/testSAP.zip'
     enableCustomDeployment: true
-    DeploymentType: 'webDeploy'
+    DeploymentType: zipDeploy
