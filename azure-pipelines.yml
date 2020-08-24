@@ -33,12 +33,20 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.BinariesDirectory)'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
+
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
     azureSubscription: 'Free Trial(1)(972d07d3-e6fd-4346-b202-e09715ebd8bf)'
     appType: 'webApp'
     WebAppName: 'testSAPAPP'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/**/*.zip'
     enableCustomDeployment: true
     DeploymentType: 'webDeploy'
