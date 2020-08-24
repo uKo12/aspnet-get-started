@@ -47,6 +47,4 @@ steps:
     azureSubscription: 'Free Trial(1)(972d07d3-e6fd-4346-b202-e09715ebd8bf)'
     appType: 'webApp'
     WebAppName: 'testSAPAPP'
-    packageForLinux: '$(Build.ArtifactStagingDirectory)/**/testSAP.zip'
-    enableCustomDeployment: true
-    DeploymentType: zipDeploy
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/testSAP.zip'
